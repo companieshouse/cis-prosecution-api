@@ -20,7 +20,7 @@
 
 		<spring-boot-dependencies.version>4.1.1</spring-boot-dependencies.version>
 		<spring-boot-maven-plugin.version>4.1.1</spring-boot-maven-plugin.version>
-
+		<ch-bom.version>0.1.27</ch-bom.version>
 	</properties>
 
 	<dependencyManagement>
@@ -29,7 +29,7 @@
 			<dependency>
 				<groupId>uk.gov.companieshouse</groupId>
 				<artifactId>ch-dependency-bom</artifactId>
-				<version>0.1.27</version>
+				<version>${ch-bom.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -37,7 +37,7 @@
 			<dependency>
 				<groupId>uk.gov.companieshouse</groupId>
 				<artifactId>ch-test-bom</artifactId>
-				<version>0.1.27</version>
+				<version>${ch-bom.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

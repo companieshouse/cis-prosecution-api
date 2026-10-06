@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>uk.gov.companieshouse</groupId>
+		<artifactId>companies-house-parent</artifactId>
+		<version>2.1.20</version>
+		<relativePath/>
+	</parent>
+	<artifactId>cis-prosecution-api</artifactId>
+	<version>unversioned</version>
+	<name>cis-prosecution-api</name>
+	<description>CIS Prosecution API - This service is part of the CIS integration layer and allows calls to CHIPS relating to prosecution cases.</description>
+	<properties>
+		<java.version>25</java.version>
+		<!--These should be controlled from the parent pom please remove once a java 25 compatible version is available > 2.1.20-->
+		<maven.compiler.release>25</maven.compiler.release>
+		<jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
+
+		<spring-boot-dependencies.version>4.1.1</spring-boot-dependencies.version>
+		<spring-boot-maven-plugin.version>4.1.1</spring-boot-maven-plugin.version>
+		<ch-bom.version>0.1.27</ch-bom.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Import CH BOM first so CH-approved versions (CVE overrides) take precedence -->
+			<dependency>
+				<groupId>uk.gov.companieshouse</groupId>
+				<artifactId>ch-dependency-bom</artifactId>
+				<version>${ch-bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- Optionally import test BOM for managed test dependency versions -->
+			<dependency>
+				<groupId>uk.gov.companieshouse</groupId>
+				<artifactId>ch-test-bom</artifactId>
+				<version>${ch-bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot-maven-plugin.version}</version>
+				<configuration>
+					<mainClass>uk.gov.companieshouse.cis_prosecution_api.CisProsecutionApiApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

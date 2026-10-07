@@ -14,7 +14,7 @@ class HealthcheckControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("GET /cis-cppi-api/healthcheck - Success")
+    @DisplayName("GET /cis-prosecution-api/healthcheck - Success")
     void healthcheckEndpointReturnsOk() throws Exception {
         mockMvc.perform(get("/healthcheck"))
                 .andExpect(status().isOk());

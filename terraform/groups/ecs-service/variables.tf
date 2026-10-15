@@ -135,9 +135,9 @@ variable "use_set_environment_files" {
   description = "Toggle default global and shared  environment files"
 }
 
-variable "case_integration_service_api_version" {
+variable "cis_prosecution_api_version" {
   type        = string
-  description = "The version of the cis cases api container to run."
+  description = "The version of the cis prosecution api container to run."
 }
 
 variable "eric_version" {

@@ -22,6 +22,12 @@ public class ApiError implements Serializable {
         // Default constructor for serialization
     }
     
+    public ApiError(String fieldName, String message, String rejectedValue) {
+        this.fieldName = fieldName;
+        this.message = message;
+        this.rejectedValue = rejectedValue;
+    }
+    
     public String getFieldName() {
         return fieldName;
     }

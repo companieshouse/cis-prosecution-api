@@ -17,6 +17,7 @@
 		<spring-boot-dependencies.version>4.1.1</spring-boot-dependencies.version>
 		<spring-boot-maven-plugin.version>4.1.1</spring-boot-maven-plugin.version>
 		<ch-bom.version>0.1.27</ch-bom.version>
+		<structured-logging.version>3.0.53</structured-logging.version>
 	</properties>
 
 	<dependencyManagement>
@@ -69,6 +70,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>uk.gov.companieshouse</groupId>
+			<artifactId>structured-logging</artifactId>
+			<version>${structured-logging.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-simple</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 

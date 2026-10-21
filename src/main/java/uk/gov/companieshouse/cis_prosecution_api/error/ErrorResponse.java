@@ -1,7 +1,8 @@
 package uk.gov.companieshouse.cis_prosecution_api.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +10,13 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ErrorResponse implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private String message;
+
+    @JsonProperty("api_errors")
     private List<ApiError> apiErrors;
     
     public ErrorResponse() {

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ApiError implements Serializable {
     @Serial
@@ -50,5 +52,15 @@ public class ApiError implements Serializable {
     
     public void setRejectedValue(String rejectedValue) {
         this.rejectedValue = rejectedValue;
+    }
+
+    public Map<String, Object> toDebugMap() {
+        final Map<String, Object> debugMap = new HashMap<>();
+
+        debugMap.put("fieldName", fieldName);
+        debugMap.put("message", message);
+        debugMap.put("rejectedValue", rejectedValue);
+
+        return debugMap;
     }
 }

@@ -19,7 +19,7 @@ import java.util.Map;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static uk.gov.companieshouse.cis_prosecution_api.utils.RequestConstants.X_REQUEST_ID_NAME;
 
-@RestControllerAdvice("uk.gov.companieshouse.cis_prosecution_api.controllers")
+@RestControllerAdvice("uk.gov.companieshouse.cis_prosecution_api")
 public class GlobalExceptionHandler {
     
     private static final Logger LOG = LoggerFactory.getLogger(APP_NAMESPACE);

@@ -9,7 +9,6 @@ import static uk.gov.companieshouse.cis_prosecution_api.utils.RequestConstants.X
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +25,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.UnknownHttpStatusCodeException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.exc.StreamReadException;
 import tools.jackson.databind.DatabindException;
 import tools.jackson.databind.ObjectMapper;
@@ -133,7 +133,7 @@ public class GlobalExceptionHandler {
         return new ApiError(fieldName, message, rejectedValue);
     }
 
-    private String extractFieldName(List<DatabindException.Reference> path) {
+    private String extractFieldName(List<JacksonException.Reference> path) {
         return (path != null && !path.isEmpty())
             ? toSnakeCase(path.getFirst().getPropertyName())
             : null;
@@ -153,7 +153,7 @@ public class GlobalExceptionHandler {
         for (FieldError fieldError : exception.getFieldErrors()) {
             String fieldName = toSnakeCase(fieldError.getField());
             String message = fieldError.getDefaultMessage();
-            String rejectedValue = fieldError.getRejectedValue() != null ? fieldError.getRejectedValue().toString() : null;
+            String rejectedValue = Objects.toString(fieldError.getRejectedValue(), null);
             errors.add(new ApiError(fieldName, message, rejectedValue));
         }
 

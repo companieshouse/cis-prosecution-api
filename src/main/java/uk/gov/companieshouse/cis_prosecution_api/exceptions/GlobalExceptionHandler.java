@@ -80,7 +80,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(BAD_REQUEST)
     public ErrorResponse handleHttpMessageNotReadableException(HttpMessageNotReadableException exception,
-        HttpServletRequest request) throws IOException {
+        HttpServletRequest request) {
 
         HttpMessageNotReadableException safeException =
             Objects.requireNonNull(exception, "HttpMessageNotReadableException must not be null");
